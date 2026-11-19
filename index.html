@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YT Tutorial Center for Kids – Grade 6 English Grammar Quiz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans Ethiopic', sans-serif;
+      background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 50%, #fdf2f8 100%);
+      min-height: 100vh;
+    }
+    .amharic {
+      font-family: 'Noto Sans Ethiopic', 'Inter', sans-serif;
+    }
+    .option-btn {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .option-btn:not(:disabled):hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -4px rgba(59, 130, 246, 0.2);
+    }
+    .pulse-speaking {
+      animation: pulseRing 1.5s infinite;
+    }
+    @keyframes pulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.5); }
+      70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+    }
+    /* Custom scrollbar for question navigator */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+  <!-- Top Navigation & Brand Header -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white font-extrabold text-lg shadow-md">
+          YT
+        </div>
+        <div>
+          <h1 class="font-extrabold text-slate-900 text-base sm:text-lg leading-tight tracking-tight">
+            YT TUTORIAL CENTER FOR KIDS
+          </h1>
+          <p class="text-xs text-slate-500 font-medium">
+            Grade 6 English Grammar Assessment (Units 1–3) • Contact: <span class="text-indigo-600 font-semibold">0967029123</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Narrator Controls -->
+        <div class="flex items-center bg-indigo-50 border border-indigo-100 rounded-xl p-1 gap-1">
+          <button id="narratorToggleBtn" onclick="toggleAutoNarrate()" title="Toggle Auto-Read Questions"
+            class="px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 bg-indigo-600 text-white shadow-sm transition">
+            <span id="narratorIcon">🔊</span>
+            <span class="hidden sm:inline" id="narratorStatusText">British Narrator: ON</span>
+          </button>
+          <button id="replayAudioBtn" onclick="speakCurrentQuestion()" title="Read Current Question Aloud"
+            class="p-1.5 rounded-lg text-indigo-700 hover:bg-indigo-100 transition text-xs font-bold">
+            🔁 Read
+          </button>
+        </div>
+
+        <!-- Teacher Dashboard Trigger -->
+        <button onclick="openTeacherDashboard()"
+          class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold shadow-sm transition flex items-center gap-1.5">
+          <span>📊</span>
+          <span>Teacher Dashboard</span>
+        </button>
+
+        <!-- Required Timer Element -->
+        <div id="timer" style="text-align: right; font-weight: bold; color: #e74c3c; padding: 10px;"
+          class="bg-red-50 border border-red-200 rounded-xl text-sm sm:text-base shadow-inner">
+          Time: 80m
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="max-w-6xl mx-auto px-4 py-6 sm:py-8">
+
+    <!-- ==================== 1. WELCOME & IDENTIFICATION SCREEN ==================== -->
+    <section id="welcomeScreen" class="max-w-2xl mx-auto">
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 p-6 sm:p-8 text-white relative overflow-hidden">
+          <div class="relative z-10">
+            <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs font-bold uppercase tracking-wider mb-3">
+              Official Interactive Assessment
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">
+              Grade 6 English Grammar Quiz
+            </h2>
+            <p class="text-blue-100 text-sm sm:text-base">
+              Comprehensive 60-Item Assessment covering Unit 1 (Traditional Games), Unit 2 (Seasons & Human Activities), and Unit 3 (Traffic Police Officers).
+            </p>
+          </div>
+          <div class="absolute -right-8 -bottom-10 w-40 h-40 rounded-full bg-white/10"></div>
+          <div class="absolute right-12 -top-12 w-28 h-28 rounded-full bg-white/10"></div>
+        </div>
+
+        <div class="p-6 sm:p-8 space-y-6">
+          <!-- Student Identification Form -->
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200/80 space-y-4">
+            <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider flex items-center gap-2">
+              <span>🪪</span> Student Identification (Required)
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="studentName" class="block text-xs font-bold text-slate-700 mb-1.5">
+                  Full Name <span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="studentName" placeholder="e.g., Abebe Kebede"
+                  class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none text-sm font-medium bg-white transition" />
+              </div>
+              <div>
+                <label for="studentId" class="block text-xs font-bold text-slate-700 mb-1.5">
+                  Student ID Number <span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="studentId" placeholder="e.g., YT-G6-042"
+                  class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none text-sm font-medium bg-white transition" />
+              </div>
+            </div>
+            <p id="idErrorMsg" class="hidden text-xs font-semibold text-red-600 bg-red-50 border border-red-200 px-3 py-2 rounded-lg">
+              ⚠️ Please enter both your Full Name and Student ID Number before starting the quiz.
+            </p>
+          </div>
+
+          <!-- Key Rules & Features -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="flex items-start gap-2.5 p-3 rounded-xl bg-amber-50 border border-amber-200/70">
+              <span class="text-base">🔒</span>
+              <div>
+                <p class="font-bold text-amber-900">Irreversible Instant Feedback</p>
+                <p class="text-amber-800 mt-0.5">Once you click an option, your answer is locked immediately and cannot be changed.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2.5 p-3 rounded-xl bg-emerald-50 border border-emerald-200/70">
+              <span class="text-base">🇪🇹</span>
+              <div>
+                <p class="font-bold text-emerald-900">Bilingual Explanations</p>
+                <p class="text-emerald-800 mt-0.5">Every item provides detailed grammar explanations in both English and Amharic.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2.5 p-3 rounded-xl bg-indigo-50 border border-indigo-200/70">
+              <span class="text-base">🇬🇧</span>
+              <div>
+                <p class="font-bold text-indigo-900">British Female Narrator</p>
+                <p class="text-indigo-800 mt-0.5">Dedicated UK English female voice reads questions and feedback aloud.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2.5 p-3 rounded-xl bg-rose-50 border border-rose-200/70">
+              <span class="text-base">⏱️</span>
+              <div>
+                <p class="font-bold text-rose-900">80-Minute Assessment</p>
+                <p class="text-rose-800 mt-0.5">All 60 questions across Units 1, 2, and 3 with auto-grading & email report.</p>
+              </div>
+            </div>
+          </div>
+
+          <button onclick="startQuiz()"
+            class="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-extrabold text-base sm:text-lg shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+            <span>🚀 Start Assessment Now</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. ACTIVE QUIZ SCREEN ==================== -->
+    <section id="quizScreen" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- Left/Main Question Column (8 cols) -->
+      <div class="lg:col-span-8 space-y-5">
+
+        <!-- Student Banner & Live Score Pill -->
+        <div class="bg-white rounded-2xl px-5 py-3.5 shadow-sm border border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-sm">
+              🎓
+            </div>
+            <div>
+              <p class="text-xs text-slate-500 font-medium">Examinee</p>
+              <p class="text-sm font-bold text-slate-800" id="displayStudentInfo">Student Name (ID)</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-700">
+              ✅ Correct: <span id="liveCorrectCount">0</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-xl bg-rose-50 border border-rose-200 text-xs font-bold text-rose-700">
+              ❌ Wrong: <span id="liveWrongCount">0</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-xl bg-slate-100 text-xs font-bold text-slate-700">
+              📝 Answered: <span id="liveAnsweredCount">0</span>/60
+            </div>
+          </div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden">
+          <!-- Unit Section Header Ribbon -->
+          <div id="unitBanner" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex items-center justify-between">
+            <span id="unitTitleText" class="text-xs sm:text-sm font-bold tracking-wide uppercase">
+              SECTION I: UNIT 1 – TRADITIONAL GAMES
+            </span>
+            <span id="questionCounterBadge" class="px-2.5 py-0.5 rounded-full bg-white/20 text-xs font-extrabold">
+              Question 1 of 60
+            </span>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="w-full bg-slate-100 h-1.5">
+            <div id="quizProgressBar" class="bg-gradient-to-r from-emerald-400 to-indigo-600 h-1.5 transition-all duration-300" style="width: 1.66%"></div>
+          </div>
+
+          <div class="p-6 sm:p-8">
+            <!-- Grammar Topic Tag + Speak Button -->
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span id="grammarTopicTag" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-100">
+                📚 Simple Present Tense
+              </span>
+              <button onclick="speakCurrentQuestion()" id="cardSpeakBtn"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-indigo-100 text-slate-700 hover:text-indigo-700 text-xs font-bold transition">
+                <span>🇬🇧 🗣️</span>
+                <span>Listen to Question</span>
+              </button>
+            </div>
+
+            <!-- Question Stem -->
+            <h2 id="questionText" class="text-lg sm:text-xl font-extrabold text-slate-900 leading-relaxed mb-6">
+              1. The sun _______ in the east and sets in the west.
+            </h2>
+
+            <!-- Clickable Options Grid (Matching / Choice Buttons) -->
+            <div id="optionsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <!-- Populated dynamically via JS -->
+            </div>
+
+            <!-- Lock Notice -->
+            <div id="lockStatusNotice" class="mt-4 text-xs text-slate-400 flex items-center gap-1.5">
+              <span>ℹ️</span>
+              <span>Select an option above. Choices are irreversible once selected.</span>
+            </div>
+
+            <!-- Instant Bilingual Feedback & Elaborated Explanation Box -->
+            <div id="feedbackBox" class="hidden mt-6 rounded-2xl border-2 p-5 space-y-4 transition-all">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div id="feedbackHeader" class="flex items-center gap-2 font-extrabold text-base">
+                  <!-- Correct / Incorrect Badge -->
+                </div>
+                <button onclick="speakExplanation()"
+                  class="px-3 py-1 rounded-lg bg-white/80 hover:bg-white border border-slate-200 text-xs font-bold text-indigo-700 shadow-sm transition flex items-center gap-1">
+                  <span>🔊</span> Read Explanation (EN)
+                </button>
+              </div>
+
+              <!-- English Explanation -->
+              <div class="bg-white/90 rounded-xl p-4 border border-slate-200/70 space-y-1">
+                <p class="text-xs font-extrabold uppercase tracking-wider text-indigo-700 flex items-center gap-1.5">
+                  <span>🇬🇧</span> Detailed Explanation (English)
+                </p>
+                <p id="explanationEn" class="text-sm text-slate-700 leading-relaxed"></p>
+              </div>
+
+              <!-- Amharic Explanation -->
+              <div class="bg-white/90 rounded-xl p-4 border border-slate-200/70 space-y-1">
+                <p class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 flex items-center gap-1.5">
+                  <span>🇪🇹</span> ዝርዝር ማብራሪያ (በአማርኛ)
+                </p>
+                <p id="explanationAm" class="amharic text-sm text-slate-800 leading-relaxed"></p>
+              </div>
+            </div>
+
+            <!-- Navigation Footer Buttons: Back, Jump/Skip, Next, Submit -->
+            <div class="mt-8 pt-5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+              <button id="backBtn" onclick="prevQuestion()"
+                class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:cursor-not-allowed text-slate-700 font-bold text-sm transition flex items-center gap-1.5">
+                <span>⬅️</span> Back
+              </button>
+
+              <div class="flex items-center gap-2.5">
+                <button id="skipBtn" onclick="jumpNextUnanswered()"
+                  class="px-4 py-2.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold text-sm transition flex items-center gap-1.5"
+                  title="Skip to the next unanswered question">
+                  <span>⏭️</span> Jump Next / Skip
+                </button>
+
+                <button id="nextBtn" onclick="nextQuestion()"
+                  class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-sm transition flex items-center gap-1.5">
+                  <span>Next</span> <span>➡️</span>
+                </button>
+
+                <button id="submitQuizBtn" onclick="confirmAndSubmitQuiz()"
+                  class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold text-sm shadow-md transition flex items-center gap-1.5">
+                  <span>✅</span> Submit Quiz
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar: 60-Question Map & Unit Quick-Jump (4 cols) -->
+      <aside class="lg:col-span-4 space-y-5">
+        <div class="bg-white rounded-3xl shadow-lg border border-slate-100 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-extrabold text-slate-800 text-sm uppercase tracking-wider">
+              Question Navigator (1–60)
+            </h3>
+            <span class="text-xs font-semibold text-slate-500">Click to Jump</span>
+          </div>
+
+          <!-- Unit Jump Pills -->
+          <div class="grid grid-cols-3 gap-1.5 mb-4">
+            <button onclick="goToQuestion(0)" class="py-1.5 px-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs border border-blue-200 transition">
+              Unit 1 (1–20)
+            </button>
+            <button onclick="goToQuestion(20)" class="py-1.5 px-2 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold text-xs border border-purple-200 transition">
+              Unit 2 (21–40)
+            </button>
+            <button onclick="goToQuestion(40)" class="py-1.5 px-2 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold text-xs border border-teal-200 transition">
+              Unit 3 (41–60)
+            </button>
+          </div>
+
+          <!-- 60-Item Grid -->
+          <div id="questionGrid" class="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-6 gap-1.5 max-h-[360px] overflow-y-auto pr-1">
+            <!-- Generated dynamically -->
+          </div>
+
+          <!-- Legend -->
+          <div class="mt-4 pt-3 border-t border-slate-100 grid grid-cols-2 gap-2 text-[11px] font-semibold text-slate-600">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded bg-indigo-600 inline-block"></span> Current
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded bg-emerald-500 inline-block"></span> Correct (Locked)
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded bg-rose-500 inline-block"></span> Wrong (Locked)
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded bg-slate-100 border border-slate-300 inline-block"></span> Unanswered
+            </div>
+          </div>
+
+          <button onclick="confirmAndSubmitQuiz()"
+            class="mt-4 w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow transition">
+            🏁 Finish & Auto-Grade Quiz
+          </button>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ==================== 3. AUTO-GRADED RESULTS & EMAIL SCREEN ==================== -->
+    <section id="resultScreen" class="hidden max-w-4xl mx-auto space-y-6">
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 p-6 sm:p-8 text-white text-center">
+          <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm mx-auto flex items-center justify-center text-3xl mb-3">
+            🏆
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Assessment Completed & Auto-Graded!</h2>
+          <p id="resultStudentBanner" class="text-emerald-100 text-sm sm:text-base mt-1 font-medium">
+            Student: — | ID: —
+          </p>
+        </div>
+
+        <div class="p-6 sm:p-8 space-y-6">
+          <!-- Overall Score Cards -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 text-center">
+              <p class="text-xs font-bold text-indigo-600 uppercase">Total Score</p>
+              <p id="resTotalScore" class="text-2xl sm:text-3xl font-extrabold text-indigo-900 mt-1">0 / 60</p>
+            </div>
+            <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-4 text-center">
+              <p class="text-xs font-bold text-emerald-600 uppercase">Percentage</p>
+              <p id="resPercentage" class="text-2xl sm:text-3xl font-extrabold text-emerald-900 mt-1">0%</p>
+            </div>
+            <div class="bg-amber-50 border border-amber-100 rounded-2xl p-4 text-center">
+              <p class="text-xs font-bold text-amber-600 uppercase">Grade Level</p>
+              <p id="resGradeLetter" class="text-2xl sm:text-3xl font-extrabold text-amber-900 mt-1">—</p>
+            </div>
+            <div class="bg-purple-50 border border-purple-100 rounded-2xl p-4 text-center">
+              <p class="text-xs font-bold text-purple-600 uppercase">Time Taken</p>
+              <p id="resTimeTaken" class="text-2xl sm:text-3xl font-extrabold text-purple-900 mt-1">0m 0s</p>
+            </div>
+          </div>
+
+          <!-- Unit Breakdown -->
+          <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80">
+            <h3 class="font-extrabold text-slate-800 text-sm uppercase tracking-wider mb-3">
+              Section-by-Section Performance Breakdown
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="bg-white p-4 rounded-xl border border-slate-200">
+                <p class="text-xs font-bold text-blue-600">Unit 1: Traditional Games</p>
+                <p id="resUnit1" class="text-xl font-extrabold text-slate-800 mt-1">0 / 20</p>
+              </div>
+              <div class="bg-white p-4 rounded-xl border border-slate-200">
+                <p class="text-xs font-bold text-purple-600">Unit 2: Seasons & Activities</p>
+                <p id="resUnit2" class="text-xl font-extrabold text-slate-800 mt-1">0 / 20</p>
+              </div>
+              <div class="bg-white p-4 rounded-xl border border-slate-200">
+                <p class="text-xs font-bold text-teal-600">Unit 3: Traffic Police Officers</p>
+                <p id="resUnit3" class="text-xl font-extrabold text-slate-800 mt-1">0 / 20</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Submission Box to mesayferedegn2@gmail.com -->
+          <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-indigo-200 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h4 class="font-extrabold text-indigo-950 text-base flex items-center gap-2">
+                <span>📧</span> Send Official Score Report to Teacher
+              </h4>
+              <p class="text-xs text-indigo-800 mt-1">
+                Recipient Email: <strong class="underline">mesayferedegn2@gmail.com</strong> — Automatically formats your name, ID, unit breakdown, and final score.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 shrink-0">
+              <button onclick="sendScoreViaEmail()"
+                class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm shadow-md transition flex items-center gap-2">
+                <span>✉️ Send Score via Email</span>
+              </button>
+              <button onclick="copyScoreReport()"
+                class="px-4 py-3 rounded-xl bg-white hover:bg-slate-50 text-indigo-700 border border-indigo-200 font-bold text-sm transition">
+                📋 Copy Report
+              </button>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <button onclick="reviewAnswers()"
+              class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-sm transition">
+              🔍 Review All 60 Questions & Explanations
+            </button>
+            <div class="flex gap-2">
+              <button onclick="openTeacherDashboard()"
+                class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm transition">
+                📊 Open Teacher Dashboard
+              </button>
+              <button onclick="restartQuiz()"
+                class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm transition">
+                🔄 New Examinee
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. TEACHER RESULTS DASHBOARD MODAL ==================== -->
+    <div id="teacherModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+      <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden">
+        <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
+          <div>
+            <h3 class="font-extrabold text-lg flex items-center gap-2">
+              <span>📊</span> Teacher Notification & Results Dashboard
+            </h3>
+            <p class="text-xs text-slate-400">YT Tutorial Center for Kids • Grade 6 English Grammar (Units 1–3)</p>
+          </div>
+          <button onclick="closeTeacherDashboard()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white font-bold">
+            ✕
+          </button>
+        </div>
+
+        <div class="p-6 overflow-y-auto space-y-5 flex-1">
+          <!-- Summary Stats -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
+              <p class="text-xs font-bold text-slate-500 uppercase">Total Submissions</p>
+              <p id="dashTotalStudents" class="text-2xl font-extrabold text-slate-900 mt-1">0</p>
+            </div>
+            <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4">
+              <p class="text-xs font-bold text-emerald-700 uppercase">Class Average Score</p>
+              <p id="dashAvgScore" class="text-2xl font-extrabold text-emerald-900 mt-1">0%</p>
+            </div>
+            <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-4">
+              <p class="text-xs font-bold text-indigo-700 uppercase">Highest Score</p>
+              <p id="dashHighScore" class="text-2xl font-extrabold text-indigo-900 mt-1">—</p>
+            </div>
+          </div>
+
+          <!-- Submissions Table -->
+          <div class="border border-slate-200 rounded-2xl overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr class="bg-slate-100 text-slate-700 text-xs uppercase tracking-wider border-b border-slate-200">
+                    <th class="py-3 px-4 font-extrabold">Full Name</th>
+                    <th class="py-3 px-4 font-extrabold">ID Number</th>
+                    <th class="py-3 px-4 font-extrabold">Unit 1</th>
+                    <th class="py-3 px-4 font-extrabold">Unit 2</th>
+                    <th class="py-3 px-4 font-extrabold">Unit 3</th>
+                    <th class="py-3 px-4 font-extrabold">Total Score</th>
+                    <th class="py-3 px-4 font-extrabold">Submitted At</th>
+                    <th class="py-3 px-4 font-extrabold">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="teacherTableBody" class="divide-y divide-slate-100">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 px-6 py-3.5 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex gap-2">
+            <button onclick="exportDashboardCSV()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition">
+              📥 Export CSV
+            </button>
+            <button onclick="clearDashboardRecords()" class="px-4 py-2 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-800 text-xs font-bold transition">
+              🗑️ Clear Records
+            </button>
+          </div>
+          <button onclick="closeTeacherDashboard()" class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold transition">
+            Close Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // =========================================================================
+    // COMPLETE 60-ITEM QUESTION BANK (UNITS 1, 2 & 3) WITH ENGLISH & AMHARIC
+    // =========================================================================
+    const quizQuestions = [
+      // -------------------- SECTION I: UNIT 1 (1–20) --------------------
+      {
+        id: 1,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Simple Present Tense (General Truths)",
+        question: "The sun _______ in the east and sets in the west.",
+        options: { A: "rise", B: "rises", C: "rising", D: "is rising" },
+        correct: "B",
+        explanationEn: "We use the Simple Present Tense to express general truths and scientific facts. Because the subject 'The sun' is third-person singular (it), we add '-s' to the base verb 'rise' to form 'rises'.",
+        explanationAm: "አጠቃላይ እውነታዎችን እና የተፈጥሮ ህጎችን ለመግለጽ Simple Present Tense እንጠቀማለን። ባለቤቱ 'The sun' (ነጠላ/it) ስለሆነ ግሱ ላይ '-s' በመጨመር 'rises' እንላለን።"
+      },
+      {
+        id: 2,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Simple Present Tense (Permanent Situations)",
+        question: "My father _______ at an elementary school in Addis Ababa.",
+        options: { A: "work", B: "working", C: "works", D: "are working" },
+        correct: "C",
+        explanationEn: "Permanent situations and jobs are expressed in the Simple Present Tense. Since 'My father' is third-person singular (he), the correct verb form is 'works'.",
+        explanationAm: "ቋሚ ሁኔታዎችንና ስራዎችን ለመግለጽ Simple Present Tense እንጠቀማለን። 'My father' (እሱ/he) ስለሆነ ትክክለኛው ግስ 'works' ነው።"
+      },
+      {
+        id: 3,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Present Continuous Tense (Actions Happening Now)",
+        question: "Look! The children _______ Gebet'a outdoors right now.",
+        options: { A: "are playing", B: "plays", C: "play", D: "is playing" },
+        correct: "A",
+        explanationEn: "Signal words like 'Look!' and 'right now' indicate an action happening at the moment of speaking, which requires the Present Continuous Tense (am/is/are + verb-ing). With the plural subject 'The children', we use 'are playing'.",
+        explanationAm: "'Look!' እና 'right now' የሚሉት ቃላት ድርጊቱ አሁን እየተከናወነ መሆኑን ያሳያሉ። ባለቤቱ 'The children' (ብዙ ቁጥር) ስለሆነ 'are playing' እንጠቀማለን።"
+      },
+      {
+        id: 4,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Simple Present Questions",
+        question: "How often _______ your brother go to his uncle's farm?",
+        options: { A: "do", B: "is", C: "are", D: "does" },
+        correct: "D",
+        explanationEn: "To form questions in the Simple Present Tense with a main verb ('go') and a third-person singular subject ('your brother'), we use the auxiliary verb 'does'.",
+        explanationAm: "በSimple Present Tense ጥያቄ ስንጠይቅ ዋና ግስ ('go') ካለ እና ባለቤቱ ነጠላ ('your brother') ከሆነ ረዳት ግስ 'does' እንጠቀማለን።"
+      },
+      {
+        id: 5,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Simple Present Negatives",
+        question: "Daniel _______ like the ox because it is very big and mad.",
+        options: { A: "doesn't", B: "don't", C: "isn't", D: "aren't" },
+        correct: "A",
+        explanationEn: "In the Simple Present negative form with a third-person singular subject ('Daniel') and a base main verb ('like'), we use 'does not' or 'doesn't'.",
+        explanationAm: "በSimple Present አሉታዊ (negative) ዓረፍተ ነገር ውስጥ ለነጠላ ባለቤት ('Daniel') ከዋና ግስ ('like') በፊት 'doesn't' እንጠቀማለን።"
+      },
+      {
+        id: 6,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Adverbs of Frequency",
+        question: "Her friend _______ drinks alcohol because it is harmful to health.",
+        options: { A: "always", B: "never", C: "usually", D: "often" },
+        correct: "B",
+        explanationEn: "The reason clause ('because it is harmful to health') shows complete avoidance (0% frequency), which matches the adverb of frequency 'never' placed before the main verb.",
+        explanationAm: "'ምክንያቱም ለጤና ጎጂ ስለሆነ' የሚለው ሀሳብ ድርጊቱ ፈጽሞ እንደማይፈጸም ስለሚያሳይ 'never' (በፍጹም) የሚለውን ተውሳከ ግስ እንመርጣለን።"
+      },
+      {
+        id: 7,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Present Continuous Tense",
+        question: "Listen! Who _______ that loud 'coocoolu' sound behind the wall?",
+        options: { A: "make", B: "makes", C: "is making", D: "are making" },
+        correct: "C",
+        explanationEn: "The exclamation 'Listen!' signals an ongoing action right now. When 'Who' asks about the singular doer of an action in progress, we use 'is making'.",
+        explanationAm: "'Listen!' (ስማ!) የሚለው ቃል ድርጊቱ አሁን እየተፈጸመ መሆኑን ያሳያል። ስለዚህ 'is making' ትክክለኛው መልስ ነው።"
+      },
+      {
+        id: 8,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Simple Present Tense (Facts)",
+        question: "Five times five _______ twenty-five.",
+        options: { A: "equal", B: "are equal", C: "equaling", D: "equals" },
+        correct: "D",
+        explanationEn: "Mathematical facts take the Simple Present Tense. A multiplication expression treated as a single mathematical statement takes the singular verb 'equals'.",
+        explanationAm: "የሂሳብ እውነታዎች በSimple Present Tense ይገለጻሉ። አንድ የሂሳብ ስሌት እንደ አንድ ነጠላ ሀሳብ ስለሚቆጠር 'equals' ይወስዳል።"
+      },
+      {
+        id: 9,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Present Continuous Questions",
+        question: "_______ you playing traditional games with your friends at the moment?",
+        options: { A: "Are", B: "Do", C: "Is", D: "Does" },
+        correct: "A",
+        explanationEn: "The phrase 'at the moment' and the '-ing' verb ('playing') show Present Continuous Tense. With the subject 'you', the correct auxiliary verb is 'Are'.",
+        explanationAm: "'at the moment' እና '-ing' ('playing') Present Continuous መሆኑን ያሳያሉ። ከ'you' ጋር የሚሄደው ረዳት ግስ 'Are' ነው።"
+      },
+      {
+        id: 10,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Simple Present Tense (Plural Subjects)",
+        question: "Flowers _______ sunlight and water in order to grow well.",
+        options: { A: "needs", B: "need", C: "is needing", D: "needing" },
+        correct: "B",
+        explanationEn: "For general facts with a plural subject ('Flowers'), we use the base form of the verb without '-s' ('need').",
+        explanationAm: "ባለቤቱ ብዙ ቁጥር ('Flowers') ሲሆን በSimple Present Tense ግሱ ያለ '-s' ('need') ይቀመጣል።"
+      },
+      {
+        id: 11,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Simple Present vs. Present Continuous",
+        question: "He usually goes to school by bus, but today he _______.",
+        options: { A: "walks", B: "walk", C: "is walking", D: "are walking" },
+        correct: "C",
+        explanationEn: "The first clause describes a regular habit ('usually goes'), while 'but today' contrasts it with a temporary action happening now, requiring the Present Continuous 'is walking'.",
+        explanationAm: "የመጀመሪያው ክፍል የተለመደ ልማድን ('usually goes') ሲገልጽ 'but today' ደግሞ ዛሬ እየተደረገ ያለውን ጊዜያዊ ድርጊት ስለሚያሳይ 'is walking' እንጠቀማለን።"
+      },
+      {
+        id: 12,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Simple Present Wh-Questions",
+        question: "Where _______ your parents come from?",
+        options: { A: "does", B: "is", C: "are", D: "do" },
+        correct: "D",
+        explanationEn: "In Simple Present Wh-questions with a plural subject ('your parents') and base verb ('come'), we use the auxiliary 'do'.",
+        explanationAm: "ባለቤቱ ብዙ ቁጥር ('your parents') እና ዋና ግስ ('come') ስላለ በSimple Present ጥያቄ 'do' እንጠቀማለን።"
+      },
+      {
+        id: 13,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Present Continuous Tense",
+        question: "Mahlet and I _______ on the beach and drinking orange juice now.",
+        options: { A: "are sitting", B: "sit", C: "is sitting", D: "sits" },
+        correct: "A",
+        explanationEn: "'Mahlet and I' equals 'we' (plural), and the time marker 'now' indicates an ongoing action, so 'are sitting' is required.",
+        explanationAm: "'Mahlet and I' ማለት 'እኛ' (we - ብዙ ቁጥር) ስለሆነና 'now' አሁን እየተደረገ ያለ ድርጊትን ስለሚያሳይ 'are sitting' እንጠቀማለን።"
+      },
+      {
+        id: 14,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Simple Present Spelling Rules (-y to -ies)",
+        question: "My mother _______ a new language every year to improve her skills.",
+        options: { A: "study", B: "studies", C: "studying", D: "are studying" },
+        correct: "B",
+        explanationEn: "'Every year' signals a regular routine (Simple Present). For verbs ending in a consonant + 'y' ('study') with a singular subject ('My mother'), drop 'y' and add '-ies' ('studies').",
+        explanationAm: "'Every year' የተለመደ ድርጊትን ያሳያል። 'study' በተነባቢ + 'y' ስለሚጨርስ ለነጠላ ባለቤት ('My mother') 'y' ወድቆ '-ies' በመጨመር 'studies' ይሆናል።"
+      },
+      {
+        id: 15,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Simple Present Negatives (Plural)",
+        question: "We _______ French in our school; we learn English and Amharic.",
+        options: { A: "doesn't speak", B: "aren't speak", C: "don't speak", D: "isn't speaking" },
+        correct: "C",
+        explanationEn: "With the plural pronoun 'We', the negative form in the Simple Present Tense is formed with 'don't' + base verb ('don't speak').",
+        explanationAm: "ከ'We' ጋር በSimple Present አሉታዊ ዓረፍተ ነገር ለመመስረት 'don't' + ዋና ግስ ('don't speak') እንጠቀማለን።"
+      },
+      {
+        id: 16,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Position of Adverbs of Frequency",
+        question: "Which sentence uses the adverb of frequency in the correct position?",
+        options: {
+          A: "I call always my mother.",
+          B: "Always I call my mother.",
+          C: "I call my mother always.",
+          D: "I always call my mother."
+        },
+        correct: "D",
+        explanationEn: "Adverbs of frequency (such as 'always', 'usually', 'sometimes', 'rarely', 'never') are placed directly before the main verb ('call'): 'I always call my mother.'",
+        explanationAm: "የድግግሞሽ ተውሳከ ግሶች ('always', 'usually', 'never') ሁልጊዜ ከዋናው ግስ ('call') በፊት ይገባሉ። ስለዚህ 'I always call my mother.' ትክክል ነው።"
+      },
+      {
+        id: 17,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Present Continuous Wh-Questions",
+        question: "What _______ Bekele and Keneni doing in the library right now?",
+        options: { A: "are", B: "is", C: "do", D: "does" },
+        correct: "A",
+        explanationEn: "'Bekele and Keneni' is a plural subject, and 'doing ... right now' requires the Present Continuous auxiliary 'are'.",
+        explanationAm: "'Bekele and Keneni' ሁለት ሰዎች (ብዙ ቁጥር) ስለሆኑ እና 'right now' ስላለ 'are' እንጠቀማለን።"
+      },
+      {
+        id: 18,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Simple Present Tense (Descriptions)",
+        question: "A skilled player _______ the wooden ball high into the air during Genna.",
+        options: { A: "throw", B: "throws", C: "throwing", D: "are throwing" },
+        correct: "B",
+        explanationEn: "Describing how a traditional game is regularly played uses the Simple Present Tense. Singular subject 'A skilled player' takes 'throws'.",
+        explanationAm: "ባህላዊ ጨዋታ እንዴት እንደሚጫወት ስንገልጽ Simple Present እንጠቀማለን። 'A skilled player' ነጠላ ስለሆነ 'throws' ይወስዳል።"
+      },
+      {
+        id: 19,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Simple Present Yes/No Questions",
+        question: "_______ your sister speak English fluently?",
+        options: { A: "Do", B: "Is", C: "Does", D: "Are" },
+        correct: "C",
+        explanationEn: "When asking a Yes/No question about a singular subject ('your sister') with a base verb ('speak'), we begin the question with 'Does'.",
+        explanationAm: "ስለ አንድ ሰው ('your sister') በSimple Present ጥያቄ ስንጠይቅ ዋና ግስ ('speak') ካለ ጥያቄውን በ'Does' እንጀምራለን።"
+      },
+      {
+        id: 20,
+        unit: "SECTION I: UNIT 1 – TRADITIONAL GAMES",
+        topic: "Present Continuous Tense",
+        question: "Please be quiet! The teacher _______ on the blackboard.",
+        options: { A: "writes", B: "write", C: "are writing", D: "is writing" },
+        correct: "D",
+        explanationEn: "'Please be quiet!' indicates an action happening right at this moment. Singular subject 'The teacher' takes 'is writing'.",
+        explanationAm: "'እባካችሁ ጸጥ በሉ!' የሚለው ሀሳብ መምህሩ አሁን እየጻፈ መሆኑን ስለሚያሳይ 'is writing' ትክክለኛው መልስ ነው።"
+      },
+
+      // -------------------- SECTION II: UNIT 2 (21–40) --------------------
+      {
+        id: 21,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Simple Past Tense (Completed Past Action)",
+        question: "Last year, my father _______ rice on our farm.",
+        options: { A: "produced", B: "produces", C: "produce", D: "is producing" },
+        correct: "A",
+        explanationEn: "The past time expression 'Last year' shows that the action was completed in the past, requiring the Simple Past form 'produced'.",
+        explanationAm: "'Last year' (ባለፈው ዓመት) የሚለው ቃል ድርጊቱ በባለፈው ጊዜ ተፈጽሞ ያለቀ መሆኑን ስለሚያሳይ Simple Past ('produced') እንጠቀማለን።"
+      },
+      {
+        id: 22,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Past Continuous (Interrupted Action)",
+        question: "Alemu _______ the wheat crop when a snake suddenly appeared.",
+        options: { A: "mowed", B: "was mowing", C: "mows", D: "is mowing" },
+        correct: "B",
+        explanationEn: "We use the Past Continuous ('was mowing') for a longer background action in the past that was interrupted by a shorter Simple Past event ('when a snake suddenly appeared').",
+        explanationAm: "በባለፈው ጊዜ እየተከናወነ የነበረ ረዘም ያለ ድርጊት ('was mowing') በሌላ አጭር ድርጊት ('appeared') ሲቋረጥ Past Continuous እንጠቀማለን።"
+      },
+      {
+        id: 23,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Past Habits with 'used to' (Questions)",
+        question: "_______ they use to have a sports car when they lived in the city?",
+        options: { A: "Do", B: "Were", C: "Did", D: "Are" },
+        correct: "C",
+        explanationEn: "Questions about past habits or states with 'use to' are formed using the past auxiliary 'Did' + subject + 'use to' + base verb.",
+        explanationAm: "በባለፈው ጊዜ የነበረን ልማድ በ'use to' ስንጠይቅ 'Did' + ባለቤት + 'use to' እንጠቀማለን።"
+      },
+      {
+        id: 24,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Compound Adjectives (Number + Singular Noun)",
+        question: "A walk that takes ten minutes is called a _______ walk.",
+        options: { A: "ten-minutes", B: "ten minutes", C: "tenth-minute", D: "ten-minute" },
+        correct: "D",
+        explanationEn: "When forming a hyphenated compound adjective with Number + Noun before another noun, the noun stays singular: 'a ten-minute walk'.",
+        explanationAm: "ቁጥርና ስም ተጣምረው ቅጽል (Compound Adjective) ሲሆኑ ስሙ ሁልጊዜ ነጠላ ይሆናል፤ ስለዚህ 'ten-minute' ትክክል ነው።"
+      },
+      {
+        id: 25,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Past Continuous with 'While'",
+        question: "While we _______ a picnic in the field, it started to rain heavily.",
+        options: { A: "were having", B: "had", C: "have", D: "was having" },
+        correct: "A",
+        explanationEn: "After 'While', we use the Past Continuous to show an ongoing past activity interrupted by another event. With 'we', the correct form is 'were having'.",
+        explanationAm: "ከ'While' ቀጥሎ በሂደት ላይ የነበረን የባለፈ ድርጊት ለመግለጽ Past Continuous እንጠቀማለን፤ ከ'we' ጋር 'were having' ይሄዳል።"
+      },
+      {
+        id: 26,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Past Habits with 'used to' (Negative)",
+        question: "Meron _______ vegetables when she was younger, but now she loves them.",
+        options: {
+          A: "didn't used to eat",
+          B: "didn't use to eat",
+          C: "wasn't eat",
+          D: "doesn't eat"
+        },
+        correct: "B",
+        explanationEn: "In negative sentences with 'didn't', 'used' drops the '-d' and becomes 'didn't use to' + base verb ('eat').",
+        explanationAm: "በአሉታዊ ዓረፍተ ነገር 'didn't' ስንጠቀም 'used' ላይ ያለው '-d' ወድቆ 'didn't use to eat' ይሆናል።"
+      },
+      {
+        id: 27,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Modal Verbs of Probability (100% Certainty)",
+        question: "If the forecast shows a 100% chance of sunshine, it _______ be sunny on Monday.",
+        options: { A: "might", B: "couldn't", C: "will", D: "won't" },
+        correct: "C",
+        explanationEn: "According to the weather probability scale in Unit 2, 100% certainty in a forecast is expressed with 'will'.",
+        explanationAm: "በምዕራፍ 2 መሰረት 100% እርግጠኛ የሆነ የአየር ሁኔታ ትንበያን ለመግለጽ 'will' እንጠቀማለን።"
+      },
+      {
+        id: 28,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Coordinating Conjunctions (Contrast)",
+        question: "In spring farmers wear lighter clothes, _______ in summer they stay indoors.",
+        options: { A: "or", B: "for", C: "so", D: "but" },
+        correct: "D",
+        explanationEn: "The two clauses show contrasting seasonal activities (wearing light clothes vs. staying indoors), so the coordinating conjunction 'but' is used.",
+        explanationAm: "ሁለቱ ዓረፍተ ነገሮች ተቃራኒ የወቅት ተግባራትን ስለሚያሳዩ በ'but' (ነገር ግን) ይያያዛሉ።"
+      },
+      {
+        id: 29,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Past Continuous (Parallel Actions)",
+        question: "I was studying for my test while my brother _______ dinner.",
+        options: { A: "was making", B: "made", C: "makes", D: "is making" },
+        correct: "A",
+        explanationEn: "When two actions were happening simultaneously in the past, both clauses use the Past Continuous Tense ('was studying' ... 'was making').",
+        explanationAm: "በባለፈው ጊዜ ሁለት ድርጊቶች በአንድ ጊዜ ጎን ለጎን እየተከናወኑ ከነበረ ሁለቱም በPast Continuous ('was making') ይገለጻሉ።"
+      },
+      {
+        id: 30,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Compound Adjectives (Adverb/Adj + Present Participle)",
+        question: "A person who works very hard on the farm is a _______ person.",
+        options: { A: "hard-worked", B: "hard-working", C: "work-hard", D: "hardly-working" },
+        correct: "B",
+        explanationEn: "A person who works hard is described with the compound adjective 'hard-working'.",
+        explanationAm: "ጠንክሮ የሚሰራ ሰው 'hard-working' በሚለው ጥምር ቅጽል (Compound Adjective) ይገለጻል።"
+      },
+      {
+        id: 31,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Modal Verbs of Probability (0% Possibility)",
+        question: "The sky is completely clear (0% chance of rain); it _______ rain today.",
+        options: { A: "will", B: "should", C: "won't", D: "might" },
+        correct: "C",
+        explanationEn: "A 0% probability means something will definitely not happen, which is expressed using 'won't' (will not).",
+        explanationAm: "0% የመዝነብ ዕድል ማለት ዝናብ እንደማይዘንብ እርግጠኛ መሆን ስለሆነ 'won't' እንጠቀማለን።"
+      },
+      {
+        id: 32,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Simple Past (Irregular Verbs)",
+        question: "Our English course _______ three months ago.",
+        options: { A: "begin", B: "begins", C: "beginning", D: "began" },
+        correct: "D",
+        explanationEn: "'Three months ago' indicates a specific past time. 'Begin' is an irregular verb whose Simple Past form is 'began'.",
+        explanationAm: "'Three months ago' ያለፈ ጊዜን ያሳያል። 'begin' መደበኛ ያልሆነ ግስ ሲሆን የSimple Past ቅርጹ 'began' ነው።"
+      },
+      {
+        id: 33,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Past Continuous with 'always' (Repeated Irritation)",
+        question: "She _______ always coming to class late, which annoyed everyone.",
+        options: { A: "was", B: "were", C: "did", D: "had" },
+        correct: "A",
+        explanationEn: "Past Continuous with 'always' expresses an annoying past habit. With the singular subject 'She', we use 'was'.",
+        explanationAm: "በባለፈው ጊዜ የሚያበሳጭ ተደጋጋሚ ልማድን ለመግለጽ Past Continuous ከ'always' ጋር እንጠቀማለን፤ ከ'She' ጋር 'was' ይሄዳል።"
+      },
+      {
+        id: 34,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Modal Verbs of Possibility (50% Probability)",
+        question: "Look at the dark clouds (50% probability); it _______ rain this afternoon.",
+        options: { A: "won't", B: "may", C: "shall", D: "mustn't" },
+        correct: "B",
+        explanationEn: "As taught in Unit 2 Lesson 14, 'may' typically expresses around a 50% possibility that something will happen.",
+        explanationAm: "በምዕራፍ 2 እንደተገለጸው 50% ገደማ የመሆን ዕድልን ለመግለጽ 'may' እንጠቀማለን።"
+      },
+      {
+        id: 35,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Compound Sentence Punctuation",
+        question: "Which punctuation mark is placed before a coordinating conjunction in a compound sentence?",
+        options: { A: "A period", B: "A question mark", C: "A comma", D: "An apostrophe" },
+        correct: "C",
+        explanationEn: "When joining two independent simple sentences with a coordinating conjunction (for, and, nor, but, or, yet, so), place a comma before the conjunction.",
+        explanationAm: "ሁለት ነጠላ ዓረፍተ ነገሮችን በአያያዥ ቃል (and, but, or...) ስናገናኝ ከአያያዥ ቃሉ በፊት ኮማ (comma) እናስቀምጣለን።"
+      },
+      {
+        id: 36,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Simple Past (Irregular Verbs)",
+        question: "My dog _______ on my bed all night yesterday.",
+        options: { A: "sleep", B: "sleeping", C: "sleeps", D: "slept" },
+        correct: "D",
+        explanationEn: "'Yesterday' requires the Simple Past Tense. The irregular past form of 'sleep' is 'slept'.",
+        explanationAm: "'Yesterday' (ትናንት) ስላለ Simple Past ያስፈልጋል። የ'sleep' የባለፈ ጊዜ ቅርጽ 'slept' ነው።"
+      },
+      {
+        id: 37,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Compound Adjectives (Noun + Past Participle)",
+        question: "An engine that is cooled by water is a _______ engine.",
+        options: { A: "water-cooled", B: "water-cooling", C: "cooling-water", D: "cooled-water" },
+        correct: "A",
+        explanationEn: "Following the Noun + Past Participle pattern (water + cooled), an engine cooled by water is a 'water-cooled' engine.",
+        explanationAm: "ስም + Past Participle ('water' + 'cooled') በማጣመር 'water-cooled' የሚል ጥምር ቅጽል እንመሰርታለን።"
+      },
+      {
+        id: 38,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Past Continuous Questions (Specific Past Time)",
+        question: "What _______ you doing yesterday at six o'clock in the evening?",
+        options: { A: "was", B: "were", C: "did", D: "are" },
+        correct: "B",
+        explanationEn: "Asking about an action in progress at a specific past time ('yesterday at six o'clock') uses Past Continuous. With 'you', use 'were'.",
+        explanationAm: "ትናንት በተወሰነ ሰዓት ('yesterday at six o'clock') እየተደረገ ስለነበረ ነገር ስንጠይቅ ከ'you' ጋር 'were' እንጠቀማለን።"
+      },
+      {
+        id: 39,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Simple Past Spelling Rules (-y to -ied)",
+        question: "The children _______ the heavy books to the classroom last Friday.",
+        options: { A: "carry", B: "carries", C: "carried", D: "carrying" },
+        correct: "C",
+        explanationEn: "'Last Friday' indicates the Simple Past. Regular verbs ending in consonant + 'y' ('carry') change 'y' to 'i' and add '-ed' ('carried').",
+        explanationAm: "'Last Friday' ያለፈ ጊዜን ያሳያል። 'carry' በተነባቢ + 'y' ስለሚጨርስ 'y' ወደ 'i' ተቀይሮ '-ed' ሲጨመር 'carried' ይሆናል።"
+      },
+      {
+        id: 40,
+        unit: "SECTION II: UNIT 2 – SEASONS AND HUMAN ACTIVITIES",
+        topic: "Expressing Preferences ('would rather')",
+        question: "I _______ rather stay at home than go out in the heavy rain.",
+        options: { A: "will", B: "am", C: "have", D: "would" },
+        correct: "D",
+        explanationEn: "To express a specific preference between two actions, we use the structure 'would rather + base verb + than + base verb'.",
+        explanationAm: "ምርጫን ለመግለጽ 'would rather ... than ...' የሚለውን መዋቅር እንጠቀማለን። ስለዚህ 'would' ትክክል ነው።"
+      },
+
+      // -------------------- SECTION III: UNIT 3 (41–60) --------------------
+      {
+        id: 41,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Modal Verbs of Obligation & Law ('must')",
+        question: "You _______ stop your vehicle completely when the traffic light turns red.",
+        options: { A: "must", B: "may", C: "might", D: "could" },
+        correct: "A",
+        explanationEn: "'Must' expresses strict obligation, duty, and mandatory traffic laws that every driver is required to obey.",
+        explanationAm: "'Must' ጥብቅ ግዴታንና መከበር ያለባቸውን የትራፊክ ህጎችን ለመግለጽ ያገለግላል።"
+      },
+      {
+        id: 42,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Future Plans with 'be going to'",
+        question: "I _______ join the traffic police force next month; I have already applied.",
+        options: { A: "will", B: "am going to", C: "shall", D: "going to" },
+        correct: "B",
+        explanationEn: "We use 'be going to + base verb' ('am going to') when a future plan or decision has already been made in advance ('I have already applied').",
+        explanationAm: "አስቀድሞ የታቀደና የተወሰነ የወደፊት እቅድን ('I have already applied') ለመግለጽ 'am going to' እንጠቀማለን።"
+      },
+      {
+        id: 43,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Prohibition with 'can't'",
+        question: "Look at the 'No Parking' sign! We _______ park our car here.",
+        options: { A: "can", B: "should", C: "can't", D: "ought to" },
+        correct: "C",
+        explanationEn: "We use 'can't' to state that something is against official rules or traffic signs.",
+        explanationAm: "በህግ ወይም በትራፊክ ምልክት የተከለከለ ነገርን ለመግለጽ 'can't' እንጠቀማለን።"
+      },
+      {
+        id: 44,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Offers & Suggestions with 'Shall'",
+        question: "_______ I carry this heavy bag for you, officer?",
+        options: { A: "Will", B: "Am", C: "Do", D: "Shall" },
+        correct: "D",
+        explanationEn: "In polite questions offering help in the first person ('I' or 'we'), 'Shall' is the standard modal auxiliary ('Shall I carry...?').",
+        explanationAm: "በመጀመሪያ መደብ ('I' ወይም 'we') እርዳታ ለመጠየቅ ወይም ለማቅረብ 'Shall' እንጠቀማለን።"
+      },
+      {
+        id: 45,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Imperative Form (Giving Directions)",
+        question: "_______ straight ahead and turn left at the traffic lights.",
+        options: { A: "Go", B: "Going", C: "Goes", D: "To go" },
+        correct: "A",
+        explanationEn: "When giving street directions or instructions, we use the imperative form, which begins directly with the base verb without 'to' ('Go').",
+        explanationAm: "አቅጣጫ ስንጠቁም ወይም ትዕዛዝ ስንሰጥ ዓረፍተ ነገሩን በቀጥታ በዋናው ግስ ('Go') እንጀምራለን።"
+      },
+      {
+        id: 46,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Strong Prohibition ('mustn't')",
+        question: "You _______ drink alcohol and drive; it is strictly prohibited and dangerous.",
+        options: { A: "don't have to", B: "mustn't", C: "couldn't", D: "may not" },
+        correct: "B",
+        explanationEn: "'Mustn't' (must not) expresses strict prohibition—something that is forbidden by law and dangerous to do.",
+        explanationAm: "'Mustn't' በህግ በጥብቅ የተከለከለ እና አደገኛ የሆነ ድርጊትን ለመግለጽ ያገለግላል።"
+      },
+      {
+        id: 47,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Past Ability with 'Could'",
+        question: "_______ you read that distant traffic sign when you were younger?",
+        options: { A: "Can", B: "May", C: "Could", D: "Shall" },
+        correct: "C",
+        explanationEn: "'Could' is the past form of 'can' and is used to ask or talk about general ability in the past ('when you were younger').",
+        explanationAm: "በባለፈው ጊዜ ('when you were younger') የነበረን ችሎታ ለመጠየቅ የ'can' የባለፈ ጊዜ ቅርጽ የሆነውን 'Could' እንጠቀማለን።"
+      },
+      {
+        id: 48,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Present Continuous for Arranged Future",
+        question: "My classmate _______ to Bahir Dar next week; his ticket is already booked.",
+        options: { A: "goes", B: "went", C: "go", D: "is going" },
+        correct: "D",
+        explanationEn: "The Present Continuous ('is going') is used to express definite future arrangements that have already been organized ('his ticket is already booked').",
+        explanationAm: "ቀድሞ የተዘጋጀ የወደፊት ጉዞን ወይም ፕሮግራምን ('his ticket is already booked') ለመግለጽ Present Continuous ('is going') እንጠቀማለን።"
+      },
+      {
+        id: 49,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Mandatory Rules ('must')",
+        question: "Drivers _______ wear a seatbelt at all times while driving on the road.",
+        options: { A: "must", B: "might", C: "could", D: "can't" },
+        correct: "A",
+        explanationEn: "Wearing a seatbelt is a compulsory traffic safety rule, so 'must' is the correct modal verb.",
+        explanationAm: "የደህንነት ቀበቶ ማሰር የግዴታ የትራፊክ ህግ ስለሆነ 'must' እንጠቀማለን።"
+      },
+      {
+        id: 50,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Formal Permission ('May')",
+        question: "Excuse me, _______ I see your driving license and permit, please?",
+        options: { A: "must", B: "may", C: "should", D: "ought" },
+        correct: "B",
+        explanationEn: "'May' is the most polite and formal modal auxiliary used to ask for permission or official documents ('May I see your license, please?').",
+        explanationAm: "በትህትና እና በመደበኛ መንገድ ፈቃድ ለመጠየቅ 'May' የሚለውን ረዳት ግስ እንጠቀማለን።"
+      },
+      {
+        id: 51,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Giving Advice ('should')",
+        question: "You look very tired. You _______ get enough rest before driving.",
+        options: { A: "mustn't", B: "can't", C: "should", D: "wouldn't" },
+        correct: "C",
+        explanationEn: "'Should' is used to give friendly advice or recommendations about what is the right and safe thing to do.",
+        explanationAm: "ምክር ወይም ጠቃሚ ሀሳብ ለመስጠት 'should' እንጠቀማለን።"
+      },
+      {
+        id: 52,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Past Inability ('couldn't')",
+        question: "Dawit hit the tree yesterday because he _______ stop his car in time.",
+        options: { A: "can't", B: "mustn't", C: "shouldn't", D: "couldn't" },
+        correct: "D",
+        explanationEn: "To express inability to do something at a specific moment in the past ('yesterday'), we use 'couldn't' (could not).",
+        explanationAm: "ትናንት ('yesterday') አንድን ነገር ማድረግ አለመቻልን ለመግለጽ 'couldn't' እንጠቀማለን።"
+      },
+      {
+        id: 53,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Duty & Rules ('ought to')",
+        question: "All road users _______ to obey traffic laws and respect speed limits.",
+        options: { A: "ought", B: "should", C: "must", D: "can" },
+        correct: "A",
+        explanationEn: "Notice the word 'to' after the blank ('_______ to obey'). Among the choices, only 'ought' is followed by 'to' ('ought to') to express duty and responsibility.",
+        explanationAm: "ከክፍት ቦታው ቀጥሎ 'to' ስላለ ከምርጫዎቹ ውስጥ ከ'to' ጋር የሚሄደው 'ought' ('ought to') ብቻ ነው።"
+      },
+      {
+        id: 54,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Past Possibility ('may have + past participle')",
+        question: "Halgeyo is late for duty. He _______ have missed the morning service bus.",
+        options: { A: "can", B: "may", C: "shall", D: "ought" },
+        correct: "B",
+        explanationEn: "To express a possibility about a past event, we use 'may/might + have + past participle' ('may have missed').",
+        explanationAm: "ባለፈው ጊዜ ተፈጽሞ ሊሆን የሚችልን ግምት ለመግለጽ 'may have + past participle' ('may have missed') እንጠቀማለን።"
+      },
+      {
+        id: 55,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Traffic Law Obligation ('must')",
+        question: "When riding a motorbike, you _______ wear a protective helmet.",
+        options: { A: "may", B: "can", C: "must", D: "might" },
+        correct: "C",
+        explanationEn: "Wearing a helmet while riding a motorbike is a mandatory safety law, so 'must' is required.",
+        explanationAm: "ሞተር ሳይክል ሲነዱ የራስ ቁር (helmet) ማድረግ የግዴታ ህግ ስለሆነ 'must' እንጠቀማለን።"
+      },
+      {
+        id: 56,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Negative Imperatives (Warnings)",
+        question: "_______ turn there! That road is a one-way street.",
+        options: { A: "Doesn't", B: "Not", C: "Didn't", D: "Don't" },
+        correct: "D",
+        explanationEn: "Negative imperatives giving warnings or prohibitions start with 'Don't' + base verb ('Don't turn there!').",
+        explanationAm: "ማስጠንቀቂያ ወይም ክልከላ የሚሰጡ ትዕዛዛዊ ዓረፍተ ነገሮች በ'Don't' + ዋና ግስ ('Don't turn') ይጀምራሉ።"
+      },
+      {
+        id: 57,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Describing Clothing (Simple Present)",
+        question: "She _______ a blue uniform every day when she goes to work.",
+        options: { A: "wears", B: "is wearing", C: "wore", D: "wear" },
+        correct: "A",
+        explanationEn: "As shown in Unit 3 Lesson 12, habitual clothing worn every day uses the Simple Present of 'wear'. With 'She', it becomes 'wears'.",
+        explanationAm: "በየቀኑ የሚለበስ የስራ ልብስን (uniform) ለመግለጽ Simple Present እንጠቀማለን፤ ከ'She' ጋር 'wears' ይሆናል።"
+      },
+      {
+        id: 58,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Present State with 'to be'",
+        question: "I can't hear your instructions right now because the traffic noise _______ too loud.",
+        options: { A: "was", B: "is", C: "were", D: "are" },
+        correct: "B",
+        explanationEn: "'Right now' refers to the present time, and 'the traffic noise' is an uncountable singular noun, so we use 'is'.",
+        explanationAm: "'Right now' የአሁን ጊዜን ስለሚያሳይ እና 'traffic noise' የማይቆጠር ነጠላ ስም ስለሆነ 'is' እንጠቀማለን።"
+      },
+      {
+        id: 59,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Permission & Possibility ('can')",
+        question: "You _______ listen to the radio in your car if you want to.",
+        options: { A: "must", B: "ought to", C: "can", D: "shall" },
+        correct: "C",
+        explanationEn: "Listening to the radio is neither an obligation nor forbidden—it is allowed if you choose to, so 'can' is the appropriate modal.",
+        explanationAm: "በመኪና ውስጥ ሬዲዮ ማዳመጥ የተፈቀደ ምርጫ እንጂ ግዴታ ስላልሆነ 'can' እንጠቀማለን።"
+      },
+      {
+        id: 60,
+        unit: "SECTION III: UNIT 3 – TRAFFIC POLICE OFFICERS",
+        topic: "Describing People with 'to be'",
+        question: "Every traffic officer _______ well-trained and alert on the road.",
+        options: { A: "have", B: "are", C: "has", D: "is" },
+        correct: "D",
+        explanationEn: "When describing qualities or states using adjectives ('well-trained and alert'), we use the verb 'to be'. 'Every traffic officer' is singular, so 'is' is correct.",
+        explanationAm: "የሰዎችን ባህሪ በቅጽል ('well-trained and alert') ስንገልጽ 'to be' ግስ እንጠቀማለን። 'Every traffic officer' ነጠላ ስለሆነ 'is' ትክክል ነው።"
+      }
+    ];
+
+    // =========================================================================
+    // STATE MANAGEMENT
+    // =========================================================================
+    let studentName = "";
+    let studentId = "";
+    let currentIndex = 0;
+    // userAnswers[i] = { selected: 'A'|'B'|'C'|'D', isCorrect: boolean }
+    let userAnswers = new Array(quizQuestions.length).fill(null);
+    let timerSeconds = 80 * 60; // 80 minutes = 4800 seconds
+    let timerInterval = null;
+    let quizStartTime = null;
+    let isSubmitted = false;
+    let autoNarrate = true;
+    let britishFemaleVoice = null;
+
+    // =========================================================================
+    // DEDICATED BRITISH FEMALE NARRATOR (WEB SPEECH API)
+    // =========================================================================
+    function loadBritishFemaleVoice() {
+      if (!('speechSynthesis' in window)) return;
+      const voices = window.speechSynthesis.getVoices();
+      if (!voices.length) return;
+
+      // Priority list for natural British English female voices across browsers/OS
+      const preferredNames = [
+        "Google UK English Female",
+        "Microsoft Libby Online (Natural) - English (United Kingdom)",
+        "Microsoft Sonia Online (Natural) - English (United Kingdom)",
+        "Microsoft Hazel - English (United Kingdom)",
+        "Microsoft Susan - English (United Kingdom)",
+        "Kate",
+        "Serena",
+        "Stephanie",
+        "Fiona"
+      ];
+
+      for (const name of preferredNames) {
+        const match = voices.find(v => v.name.includes(name));
+        if (match) {
+          britishFemaleVoice = match;
+          return;
+        }
+      }
+
+      // Fallback 1: Any en-GB voice that mentions female/woman
+      const gbFemale = voices.find(v =>
+        (v.lang === "en-GB" || v.lang === "en_GB") &&
+        /female|woman|girl|hazel|susan|libby|sonia|kate|serena/i.test(v.name)
+      );
+      if (gbFemale) {
+        britishFemaleVoice = gbFemale;
+        return;
+      }
+
+      // Fallback 2: Any en-GB voice (pitched slightly warmer if generic)
+      const anyGb = voices.find(v => v.lang === "en-GB" || v.lang === "en_GB");
+      if (anyGb) {
+        britishFemaleVoice = anyGb;
+        return;
+      }
+
+      // Fallback 3: Any English female voice
+      const anyEnFemale = voices.find(v =>
+        v.lang.startsWith("en") && /female|zira|samantha|victoria|karen/i.test(v.name)
+      );
+      if (anyEnFemale) {
+        britishFemaleVoice = anyEnFemale;
+      }
+    }
+
+    if ('speechSynthesis' in window) {
+      loadBritishFemaleVoice();
+      window.speechSynthesis.onvoiceschanged = loadBritishFemaleVoice;
+    }
+
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      if (!britishFemaleVoice) loadBritishFemaleVoice();
+
+      // Replace blank underscores with natural pause word "blank" for smooth narration
+      const cleanText = text.replace(/_{2,}/g, " blank ");
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      if (britishFemaleVoice) {
+        utterance.voice = britishFemaleVoice;
+      }
+      utterance.lang = "en-GB";
+      utterance.rate = 0.96;
+      utterance.pitch = 1.08; // Gentle feminine British tone
+
+      const btn = document.getElementById("cardSpeakBtn");
+      if (btn) btn.classList.add("pulse-speaking");
+      utterance.onend = () => {
+        if (btn) btn.classList.remove("pulse-speaking");
+      };
+      utterance.onerror = () => {
+        if (btn) btn.classList.remove("pulse-speaking");
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function speakCurrentQuestion() {
+      const q = quizQuestions[currentIndex];
+      const fullSpeech = `Question ${q.id}. ${q.question} Option A: ${q.options.A}. Option B: ${q.options.B}. Option C: ${q.options.C}. Option D: ${q.options.D}.`;
+      speakText(fullSpeech);
+    }
+
+    function speakExplanation() {
+      const q = quizQuestions[currentIndex];
+      speakText(`The correct answer is ${q.correct}, ${q.options[q.correct]}. ${q.explanationEn}`);
+    }
+
+    function toggleAutoNarrate() {
+      autoNarrate = !autoNarrate;
+      const btn = document.getElementById("narratorToggleBtn");
+      const icon = document.getElementById("narratorIcon");
+      const label = document.getElementById("narratorStatusText");
+      if (autoNarrate) {
+        btn.className = "px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 bg-indigo-600 text-white shadow-sm transition";
+        icon.textContent = "🔊";
+        label.textContent = "British Narrator: ON";
+        speakCurrentQuestion();
+      } else {
+        window.speechSynthesis.cancel();
+        btn.className = "px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 bg-slate-200 text-slate-700 transition";
+        icon.textContent = "🔇";
+        label.textContent = "British Narrator: OFF";
+      }
+    }
+
+    // =========================================================================
+    // TIMER LOGIC (80 MINUTES COUNTDOWN)
+    // =========================================================================
+    function startTimer() {
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        timerSeconds--;
+        if (timerSeconds <= 0) {
+          timerSeconds = 0;
+          updateTimerDisplay();
+          clearInterval(timerInterval);
+          alert("⏰ Time is up! Your 80-minute assessment is now being automatically graded.");
+          finalizeAndGradeQuiz();
+          return;
+        }
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(timerSeconds / 60);
+      const secs = timerSeconds % 60;
+      const timerEl = document.getElementById("timer");
+      timerEl.textContent = `Time: ${mins}m ${secs < 10 ? "0" : ""}${secs}s`;
+    }
+
+    // =========================================================================
+    // QUIZ FLOW & IRREVERSIBLE INSTANT FEEDBACK
+    // =========================================================================
+    function startQuiz() {
+      const nameInput = document.getElementById("studentName").value.trim();
+      const idInput = document.getElementById("studentId").value.trim();
+      const errEl = document.getElementById("idErrorMsg");
+
+      if (!nameInput || !idInput) {
+        errEl.classList.remove("hidden");
+        return;
+      }
+      errEl.classList.add("hidden");
+
+      studentName = nameInput;
+      studentId = idInput;
+      quizStartTime = Date.now();
+
+      document.getElementById("displayStudentInfo").textContent = `${studentName} (ID: ${studentId})`;
+      document.getElementById("welcomeScreen").classList.add("hidden");
+      document.getElementById("quizScreen").classList.remove("hidden");
+
+      buildQuestionNavigator();
+      renderQuestion(0);
+      startTimer();
+    }
+
+    function buildQuestionNavigator() {
+      const grid = document.getElementById("questionGrid");
+      grid.innerHTML = "";
+      quizQuestions.forEach((q, idx) => {
+        const btn = document.createElement("button");
+        btn.id = `nav-btn-${idx}`;
+        btn.textContent = q.id;
+        btn.onclick = () => goToQuestion(idx);
+        btn.className = "h-8 rounded-lg text-xs font-bold border transition flex items-center justify-center bg-slate-100 border-slate-300 text-slate-700 hover:bg-indigo-50";
+        grid.appendChild(btn);
+      });
+    }
+
+    function updateNavigatorStyles() {
+      let correctCount = 0;
+      let wrongCount = 0;
+      let answeredCount = 0;
+
+      quizQuestions.forEach((_, idx) => {
+        const btn = document.getElementById(`nav-btn-${idx}`);
+        const ans = userAnswers[idx];
+        if (ans) {
+          answeredCount++;
+          if (ans.isCorrect) correctCount++;
+          else wrongCount++;
+        }
+
+        if (!btn) return;
+        let baseClass = "h-8 rounded-lg text-xs font-bold border transition flex items-center justify-center ";
+        if (idx === currentIndex) {
+          baseClass += "ring-2 ring-offset-1 ring-indigo-500 ";
+        }
+
+        if (!ans) {
+          baseClass += idx === currentIndex
+            ? "bg-indigo-600 text-white border-indigo-600"
+            : "bg-slate-100 text-slate-700 border-slate-300 hover:bg-indigo-50";
+        } else if (ans.isCorrect) {
+          baseClass += "bg-emerald-500 text-white border-emerald-600";
+        } else {
+          baseClass += "bg-rose-500 text-white border-rose-600";
+        }
+        btn.className = baseClass;
+      });
+
+      document.getElementById("liveCorrectCount").textContent = correctCount;
+      document.getElementById("liveWrongCount").textContent = wrongCount;
+      document.getElementById("liveAnsweredCount").textContent = answeredCount;
+    }
+
+    function renderQuestion(index) {
+      currentIndex = index;
+      const q = quizQuestions[index];
+      const existingAns = userAnswers[index];
+
+      // Update Banner colors per Unit
+      const banner = document.getElementById("unitBanner");
+      if (q.id <= 20) {
+        banner.className = "px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex items-center justify-between";
+      } else if (q.id <= 40) {
+        banner.className = "px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white flex items-center justify-between";
+      } else {
+        banner.className = "px-6 py-3 bg-gradient-to-r from-teal-600 to-emerald-600 text-white flex items-center justify-between";
+      }
+
+      document.getElementById("unitTitleText").textContent = q.unit;
+      document.getElementById("questionCounterBadge").textContent = `Question ${q.id} of ${quizQuestions.length}`;
+      document.getElementById("quizProgressBar").style.width = `${((index + 1) / quizQuestions.length) * 100}%`;
+      document.getElementById("grammarTopicTag").textContent = `📚 ${q.topic}`;
+      document.getElementById("questionText").textContent = `${q.id}. ${q.question}`;
+
+      // Render Clickable Option Buttons (Matching & Choice Style)
+      const optionsContainer = document.getElementById("optionsContainer");
+      optionsContainer.innerHTML = "";
+
+      const letters = ["A", "B", "C", "D"];
+      letters.forEach(letter => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.disabled = existingAns !== null || isSubmitted;
+
+        let btnStyle = "option-btn w-full text-left p-4 rounded-2xl border-2 flex items-center justify-between gap-3 font-semibold text-sm sm:text-base ";
+        let badgeStyle = "w-8 h-8 rounded-xl flex items-center justify-center font-extrabold text-sm shrink-0 ";
+        let statusTag = "";
+
+        if (!existingAns) {
+          btnStyle += "bg-white border-slate-200 hover:border-indigo-500 hover:bg-indigo-50/40 text-slate-800 cursor-pointer";
+          badgeStyle += "bg-indigo-100 text-indigo-700";
+        } else {
+          // Irreversible Locked State
+          btnStyle += "cursor-not-allowed ";
+          if (letter === q.correct) {
+            btnStyle += "bg-emerald-50 border-emerald-500 text-emerald-950 shadow-sm";
+            badgeStyle += "bg-emerald-600 text-white";
+            statusTag = `<span class="text-xs font-extrabold px-2 py-0.5 rounded-full bg-emerald-600 text-white shrink-0">✓ Correct</span>`;
+          } else if (letter === existingAns.selected && !existingAns.isCorrect) {
+            btnStyle += "bg-rose-50 border-rose-500 text-rose-950 shadow-sm";
+            badgeStyle += "bg-rose-600 text-white";
+            statusTag = `<span class="text-xs font-extrabold px-2 py-0.5 rounded-full bg-rose-600 text-white shrink-0">✗ Your Choice</span>`;
+          } else {
+            btnStyle += "bg-slate-50 border-slate-200 text-slate-400 opacity-70";
+            badgeStyle += "bg-slate-200 text-slate-500";
+          }
+        }
+
+        btn.className = btnStyle;
+        btn.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="${badgeStyle}">${letter}</span>
+            <span>${q.options[letter]}</span>
+          </div>
+          ${statusTag}
+        `;
+
+        if (!existingAns && !isSubmitted) {
+          btn.onclick = () => selectOption(letter);
+        }
+
+        optionsContainer.appendChild(btn);
+      });
+
+      // Lock notice & Feedback Box
+      const lockNotice = document.getElementById("lockStatusNotice");
+      const feedbackBox = document.getElementById("feedbackBox");
+      if (existingAns) {
+        lockNotice.innerHTML = `<span>🔒</span> <span class="font-semibold text-slate-600">Answer locked (${existingAns.selected}). Irreversible response recorded.</span>`;
+        showFeedbackPanel(q, existingAns);
+      } else {
+        lockNotice.innerHTML = `<span>ℹ️</span> <span>Click a button to match the correct grammar option. Once clicked, your answer is locked and irreversible.</span>`;
+        feedbackBox.classList.add("hidden");
+      }
+
+      // Navigation button states
+      document.getElementById("backBtn").disabled = index === 0;
+      document.getElementById("nextBtn").disabled = index === quizQuestions.length - 1;
+
+      updateNavigatorStyles();
+
+      if (autoNarrate && !existingAns && !isSubmitted) {
+        speakCurrentQuestion();
+      }
+    }
+
+    function selectOption(chosenLetter) {
+      // Enforce irreversibility: if already answered, ignore any further clicks
+      if (userAnswers[currentIndex] !== null || isSubmitted) return;
+
+      const q = quizQuestions[currentIndex];
+      const isCorrect = chosenLetter === q.correct;
+
+      userAnswers[currentIndex] = {
+        selected: chosenLetter,
+        isCorrect: isCorrect
+      };
+
+      // Re-render current question to lock buttons & highlight correct/wrong immediately
+      renderQuestion(currentIndex);
+
+      // Voice feedback from British female narrator
+      if (autoNarrate) {
+        if (isCorrect) {
+          speakText(`Well done! ${chosenLetter}, ${q.options[chosenLetter]}, is correct.`);
+        } else {
+          speakText(`Incorrect. You selected ${chosenLetter}. The correct answer is ${q.correct}, ${q.options[q.correct]}.`);
+        }
+      }
+    }
+
+    function showFeedbackPanel(q, ansObj) {
+      const feedbackBox = document.getElementById("feedbackBox");
+      const feedbackHeader = document.getElementById("feedbackHeader");
+
+      feedbackBox.classList.remove("hidden", "bg-emerald-50/80", "border-emerald-400", "bg-rose-50/80", "border-rose-400");
+
+      if (ansObj.isCorrect) {
+        feedbackBox.classList.add("bg-emerald-50/80", "border-emerald-400");
+        feedbackHeader.className = "flex items-center gap-2 font-extrabold text-base text-emerald-800";
+        feedbackHeader.innerHTML = `<span>🎉</span> <span>Correct! Answer (${q.correct}: ${q.options[q.correct]}) Locked.</span>`;
+      } else {
+        feedbackBox.classList.add("bg-rose-50/80", "border-rose-400");
+        feedbackHeader.className = "flex items-center gap-2 font-extrabold text-base text-rose-800";
+        feedbackHeader.innerHTML = `<span>❌</span> <span>Incorrect (You chose ${ansObj.selected}). Correct Answer: (${q.correct}: ${q.options[q.correct]}).</span>`;
+      }
+
+      document.getElementById("explanationEn").textContent = q.explanationEn;
+      document.getElementById("explanationAm").textContent = q.explanationAm;
+    }
+
+    function prevQuestion() {
+      if (currentIndex > 0) {
+        renderQuestion(currentIndex - 1);
+      }
+    }
+
+    function nextQuestion() {
+      if (currentIndex < quizQuestions.length - 1) {
+        renderQuestion(currentIndex + 1);
+      }
+    }
+
+    function goToQuestion(idx) {
+      if (idx >= 0 && idx < quizQuestions.length) {
+        renderQuestion(idx);
+      }
+    }
+
+    function jumpNextUnanswered() {
+      // Search forward from currentIndex + 1
+      for (let i = currentIndex + 1; i < quizQuestions.length; i++) {
+        if (userAnswers[i] === null) {
+          renderQuestion(i);
+          return;
+        }
+      }
+      // Wrap around from beginning
+      for (let i = 0; i < currentIndex; i++) {
+        if (userAnswers[i] === null) {
+          renderQuestion(i);
+          return;
+        }
+      }
+      alert("✅ All 60 questions have been answered! You can now click 'Submit Quiz' to view your final grade.");
+    }
+
+    // =========================================================================
+    // AUTO-GRADING, SUBMISSION & TEACHER DASHBOARD PERSISTENCE
+    // =========================================================================
+    function confirmAndSubmitQuiz() {
+      const unansweredCount = userAnswers.filter(a => a === null).length;
+      if (unansweredCount > 0) {
+        const proceed = confirm(
+          `You still have ${unansweredCount} unanswered question(s).\nUnanswered questions will be graded as 0.\n\nDo you want to submit your assessment now?`
+        );
+        if (!proceed) return;
+      }
+      finalizeAndGradeQuiz();
+    }
+
+    function finalizeAndGradeQuiz() {
+      isSubmitted = true;
+      if (timerInterval) clearInterval(timerInterval);
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+
+      let unit1Score = 0;
+      let unit2Score = 0;
+      let unit3Score = 0;
+
+      quizQuestions.forEach((q, idx) => {
+        const ans = userAnswers[idx];
+        if (ans && ans.isCorrect) {
+          if (q.id <= 20) unit1Score++;
+          else if (q.id <= 40) unit2Score++;
+          else unit3Score++;
+        }
+      });
+
+      const totalScore = unit1Score + unit2Score + unit3Score;
+      const percentage = Math.round((totalScore / quizQuestions.length) * 100);
+
+      let gradeLetter = "F (Needs Improvement)";
+      if (percentage >= 90) gradeLetter = "A (Excellent)";
+      else if (percentage >= 80) gradeLetter = "B (Very Good)";
+      else if (percentage >= 70) gradeLetter = "C (Good)";
+      else if (percentage >= 50) gradeLetter = "D (Satisfactory)";
+
+      const elapsedSeconds = quizStartTime ? Math.floor((Date.now() - quizStartTime) / 1000) : 0;
+      const elapsedMins = Math.floor(elapsedSeconds / 60);
+      const elapsedSecs = elapsedSeconds % 60;
+      const timeFormatted = `${elapsedMins}m ${elapsedSecs}s`;
+
+      // Populate Result Screen
+      document.getElementById("resultStudentBanner").textContent = `Student: ${studentName}  |  ID Number: ${studentId}`;
+      document.getElementById("resTotalScore").textContent = `${totalScore} / 60`;
+      document.getElementById("resPercentage").textContent = `${percentage}%`;
+      document.getElementById("resGradeLetter").textContent = gradeLetter.split(" ")[0];
+      document.getElementById("resTimeTaken").textContent = timeFormatted;
+      document.getElementById("resUnit1").textContent = `${unit1Score} / 20`;
+      document.getElementById("resUnit2").textContent = `${unit2Score} / 20`;
+      document.getElementById("resUnit3").textContent = `${unit3Score} / 20`;
+
+      // Save to Teacher Dashboard (localStorage)
+      const record = {
+        studentName,
+        studentId,
+        unit1Score,
+        unit2Score,
+        unit3Score,
+        totalScore,
+        percentage,
+        gradeLetter,
+        timeFormatted,
+        submittedAt: new Date().toLocaleString()
+      };
+      saveRecordToDashboard(record);
+      window.latestSubmissionRecord = record;
+
+      document.getElementById("quizScreen").classList.add("hidden");
+      document.getElementById("resultScreen").classList.remove("hidden");
+
+      if (autoNarrate) {
+        speakText(`Assessment complete! ${studentName}, you scored ${totalScore} out of 60, which is ${percentage} percent. You may now send your score report to your teacher via email.`);
+      }
+    }
+
+    function buildEmailReportText(rec) {
+      return [
+        "YT TUTORIAL CENTER FOR KIDS - OFFICIAL GRADE 6 ENGLISH GRAMMAR REPORT",
+        "====================================================================",
+        `Student Full Name : ${rec.studentName}`,
+        `Student ID Number : ${rec.studentId}`,
+        `Submission Date   : ${rec.submittedAt}`,
+        `Time Taken        : ${rec.timeFormatted}`,
+        "--------------------------------------------------------------------",
+        `Section I  (Unit 1 – Traditional Games)          : ${rec.unit1Score} / 20`,
+        `Section II (Unit 2 – Seasons & Human Activities) : ${rec.unit2Score} / 20`,
+        `Section III(Unit 3 – Traffic Police Officers)    : ${rec.unit3Score} / 20`,
+        "--------------------------------------------------------------------",
+        `FINAL TOTAL SCORE : ${rec.totalScore} / 60 (${rec.percentage}%)`,
+        `GRADE EVALUATION  : ${rec.gradeLetter}`,
+        "====================================================================",
+        "Sent via YT Tutorial Center Interactive Quiz System (Contact: 0967029123)"
+      ].join("\n");
+    }
+
+    function sendScoreViaEmail() {
+      const rec = window.latestSubmissionRecord;
+      if (!rec) return;
+      const recipient = "mesayferedegn2@gmail.com";
+      const subject = encodeURIComponent(`Grade 6 English Grammar Score - ${rec.studentName} (${rec.studentId}) - ${rec.totalScore}/60`);
+      const body = encodeURIComponent(buildEmailReportText(rec));
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    }
+
+    function copyScoreReport() {
+      const rec = window.latestSubmissionRecord;
+      if (!rec) return;
+      const text = buildEmailReportText(rec);
+      navigator.clipboard.writeText(text).then(() => {
+        alert("📋 Score report copied to clipboard! You can paste and send it to mesayferedegn2@gmail.com.");
+      });
+    }
+
+    function reviewAnswers() {
+      // Lock any unanswered questions during review mode so explanations can be inspected
+      quizQuestions.forEach((q, idx) => {
+        if (userAnswers[idx] === null) {
+          userAnswers[idx] = { selected: "None", isCorrect: false };
+        }
+      });
+      document.getElementById("resultScreen").classList.add("hidden");
+      document.getElementById("quizScreen").classList.remove("hidden");
+      renderQuestion(0);
+    }
+
+    function restartQuiz() {
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      if (timerInterval) clearInterval(timerInterval);
+      userAnswers = new Array(quizQuestions.length).fill(null);
+      currentIndex = 0;
+      timerSeconds = 80 * 60;
+      isSubmitted = false;
+      document.getElementById("studentName").value = "";
+      document.getElementById("studentId").value = "";
+      document.getElementById("timer").textContent = "Time: 80m";
+      document.getElementById("resultScreen").classList.add("hidden");
+      document.getElementById("quizScreen").classList.add("hidden");
+      document.getElementById("welcomeScreen").classList.remove("hidden");
+    }
+
+    // =========================================================================
+    // TEACHER DASHBOARD STORAGE & RENDERING
+    // =========================================================================
+    const STORAGE_KEY = "yt_tutorial_g6_english_results_v1";
+
+    function getDashboardRecords() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveRecordToDashboard(record) {
+      const list = getDashboardRecords();
+      list.unshift(record);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    }
+
+    function openTeacherDashboard() {
+      const records = getDashboardRecords();
+      document.getElementById("dashTotalStudents").textContent = records.length;
+
+      if (records.length > 0) {
+        const avg = Math.round(records.reduce((acc, r) => acc + r.percentage, 0) / records.length);
+        const best = records.reduce((max, r) => (r.totalScore > max.totalScore ? r : max), records[0]);
+        document.getElementById("dashAvgScore").textContent = `${avg}%`;
+        document.getElementById("dashHighScore").textContent = `${best.totalScore}/60 (${best.studentName})`;
+      } else {
+        document.getElementById("dashAvgScore").textContent = "0%";
+        document.getElementById("dashHighScore").textContent = "—";
+      }
+
+      const tbody = document.getElementById("teacherTableBody");
+      tbody.innerHTML = "";
+
+      if (records.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="8" class="py-8 px-4 text-center text-slate-400 font-medium">
+              No student submissions recorded yet. Complete and submit the quiz to see results appear here automatically.
+            </td>
+          </tr>
+        `;
+      } else {
+        records.forEach((rec, idx) => {
+          const tr = document.createElement("tr");
+          tr.className = "hover:bg-slate-50 transition";
+          tr.innerHTML = `
+            <td class="py-3 px-4 font-bold text-slate-900">${rec.studentName}</td>
+            <td class="py-3 px-4 font-mono text-xs text-slate-600">${rec.studentId}</td>
+            <td class="py-3 px-4 font-semibold text-blue-700">${rec.unit1Score}/20</td>
+            <td class="py-3 px-4 font-semibold text-purple-700">${rec.unit2Score}/20</td>
+            <td class="py-3 px-4 font-semibold text-teal-700">${rec.unit3Score}/20</td>
+            <td class="py-3 px-4 font-extrabold text-emerald-700">${rec.totalScore}/60 (${rec.percentage}%)</td>
+            <td class="py-3 px-4 text-xs text-slate-500">${rec.submittedAt}</td>
+            <td class="py-3 px-4">
+              <button onclick="emailSpecificRecord(${idx})"
+                class="px-2.5 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold border border-indigo-200 transition">
+                ✉️ Email
+              </button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      document.getElementById("teacherModal").classList.remove("hidden");
+    }
+
+    function closeTeacherDashboard() {
+      document.getElementById("teacherModal").classList.add("hidden");
+    }
+
+    function emailSpecificRecord(idx) {
+      const records = getDashboardRecords();
+      const rec = records[idx];
+      if (!rec) return;
+      const recipient = "mesayferedegn2@gmail.com";
+      const subject = encodeURIComponent(`Grade 6 English Grammar Score - ${rec.studentName} (${rec.studentId}) - ${rec.totalScore}/60`);
+      const body = encodeURIComponent(buildEmailReportText(rec));
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    }
+
+    function exportDashboardCSV() {
+      const records = getDashboardRecords();
+      if (!records.length) {
+        alert("No records available to export.");
+        return;
+      }
+      const headers = ["Full Name", "ID Number", "Unit 1 (/20)", "Unit 2 (/20)", "Unit 3 (/20)", "Total (/60)", "Percentage", "Grade", "Time Taken", "Submitted At"];
+      const rows = records.map(r => [
+        `"${r.studentName}"`, `"${r.studentId}"`, r.unit1Score, r.unit2Score, r.unit3Score,
+        r.totalScore, `${r.percentage}%`, `"${r.gradeLetter}"`, `"${r.timeFormatted}"`, `"${r.submittedAt}"`
+      ]);
+      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "Grade6_English_Grammar_Results.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function clearDashboardRecords() {
+      if (confirm("Are you sure you want to clear all saved student results from the Teacher Dashboard?")) {
+        localStorage.removeItem(STORAGE_KEY);
+        openTeacherDashboard();
+      }
+    }
+  </script>
+</body>
+</html>
